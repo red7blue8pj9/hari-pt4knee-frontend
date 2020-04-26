@@ -1,0 +1,26 @@
+<ng-container>
+  <mat-sidenav-container class="nav-container">
+    <mat-sidenav mode="side" opened class="sidenav"
+                 [fixedInViewport]=false [fixedTopGap]=0
+                 [fixedBottomGap]=0>
+      <mat-nav-list>
+        <mat-list-item routerLink="datasets" routerLinkActive="active-red">Datasets</mat-list-item>
+        <mat-list-item routerLink="visualization" routerLinkActive="active-red">Visualization</mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container>
+
+  <mat-sidenav-container class="container">
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <mat-toolbar class="footer" color="primary">
+    <div class="footer-content">
+      <p>© 2019, University of Pittsburgh. All Rights Reserved.</p>
+    </div>
+  </mat-toolbar>
+</ng-container>
+
+

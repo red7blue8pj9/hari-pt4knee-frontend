@@ -1,0 +1,21 @@
+
+
+
+Features matrix - This table layout makes clear that the information can be thought of as a two-dimensional numerical array or matrix, called the features matrix with shape [n_samples, n_features]
+
+Target array.- In addition to the feature matrix X, we also generally work with a label or target array, which by convention we will usually call y. The target array is usually one dimensional, with length n_samples, and is generally contained in a NumPy array or Pandas Series.
+
+
+
+Each value we are predicting is the response (also known as: target, outcome, label, dependent variable)
+
+Classification is supervised learning in which the response is categorical
+
+
+
+
+Requirements for working with data in scikit-learn
+
+1) Features and response should be numeric
+
+2)Features and response should have specific shapes

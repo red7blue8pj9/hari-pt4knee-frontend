@@ -1,0 +1,6 @@
+# Project exclude paths
+/node_modules/
+
+# file: ~/.gitignore_global
+.DS_Store
+.idea

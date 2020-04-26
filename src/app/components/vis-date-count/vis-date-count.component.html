@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-title>ENC Numbers Per Day</mat-card-title>
+  <mat-selection-list>
+
+  </mat-selection-list>
+  <div style="display: block">
+    <canvas *ngIf="dateData[0].data.length>0" baseChart [datasets]="dateData" [labels]="dates"
+            [options]="barChartOptions"
+            [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+</mat-card>
+
+
+<mat-card>
+  <mat-card-title>ENC Numbers Per Month</mat-card-title>
+  <div style="display: block">
+    <canvas *ngIf="monthData[0].data.length>0" baseChart [datasets]="monthData" [labels]="months"
+            [options]="barChartOptions"
+            [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <!--  <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>-->
+</mat-card>
+
+
+<mat-card>
+  <mat-card-title>ENC Numbers Per Year</mat-card-title>
+  <div style="display: block">
+    <canvas *ngIf="yearData[0].data.length>0" baseChart [datasets]="yearData" [labels]="years"
+            [options]="barChartOptions"
+            [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <!--  <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>-->
+</mat-card>
