@@ -3,11 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiRoot: 'https://shrsft6029himb.shrs.pitt.edu/pt4knee/dev/api/api',
-  userRoot: 'https://shrsft6029himb.shrs.pitt.edu/pt4knee/dev/api/',
-  // apiRoot: 'http://100.64.11.182:3502/api',
-  // userRoot: 'http://100.64.11.182:3502/',
+    production: false,
+    // apiRoot: 'https://shrsft6029himb.shrs.pitt.edu/pt4knee/dev/api/api',
+    // userRoot: 'https://shrsft6029himb.shrs.pitt.edu/pt4knee/dev/api/',
+    apiRoot: 'http://100.64.11.182:3502/api',
+    userRoot: 'http://100.64.11.182:3502/',
 };
 
 /*

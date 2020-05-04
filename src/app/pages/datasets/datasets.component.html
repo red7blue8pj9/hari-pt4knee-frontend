@@ -1,13 +1,63 @@
-<p>datasets works!</p>
-<p>datasets works!</p>
-<p>datasets works!</p>
-<p>datasets works!</p>
-<p>datasets works!</p>
-<p>datasets works!</p>
-<p>datasets works!</p>
-<p>datasets works!</p>
-<p>datasets works!</p>
-<p>datasets works!</p>
-<p>datasets works!</p>
-<p>datasets works!</p>
+<!--<div class="container" fxFlex fxLayout="row" fxLayoutAlign="space-between stretch">-->
+<!--    <div class="content" fxFlex fxLayout="row">-->
+<!--        <mat-grid-list cols="4" rowHeight="100px" fxFlex>-->
+<!--            <mat-grid-tile *ngFor="let element of datasetElements" class=file-or-folder>-->
+<!--                <span [matMenuTriggerFor]="rootMenu" [matMenuTriggerData]="{element: element}"-->
+<!--                      #menuTrigger="matMenuTrigger"></span>-->
+<!--                <div fxLayout="column" fxLayoutAlign="space-between center" (click)="openMenu($event, menuTrigger)">-->
+<!--                    <mat-icon color="primary" class="file-or-folder-icon pointer">insert_drive_file</mat-icon>-->
+<!--                    <span>{{element.table_name}}</span>-->
+<!--                </div>-->
+<!--            </mat-grid-tile>-->
+<!--        </mat-grid-list>-->
+<!--    </div>-->
+<!--</div>-->
 
+<div class="example-container mat-elevation-z8">
+
+    <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="table_name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="table_name"> {{row.table_name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="create_time">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Created Time</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="create_time"> {{convert(row.create_time)}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="modified_time">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Modified Time</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="modified_time"> {{convert(row.modified_time)}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.table_name" data-label="table_name">
+                <button mat-raised-button color="primary" (click)="showDescription(row.table_name)">Description</button>
+                <button mat-raised-button color="primary" (click)="downloadFile(row.table_name)">Download</button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[10,20,50,100]"></mat-paginator>
+</div>
+
+
+<mat-menu #rootMenu="matMenu" [overlapTrigger]="false">
+    <ng-template matMenuContent let-element="element">
+        <button mat-menu-item (click)="downloadFile(element.table_name)">
+            <mat-icon>cloud_download</mat-icon>
+            <span>Download</span>
+        </button>
+        <!--        <button mat-menu-item (click)="deleteElement(element)">-->
+        <!--            <mat-icon>delete</mat-icon>-->
+        <!--            <span>Delete</span>-->
+        <!--        </button>-->
+    </ng-template>
+</mat-menu>

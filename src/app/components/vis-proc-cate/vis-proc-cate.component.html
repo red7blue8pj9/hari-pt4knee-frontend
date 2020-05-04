@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-title>KNEE PROC CATE</mat-card-title>
+    <div style="display: block">
+        <canvas *ngIf="procCate.length>0"
+                baseChart
+                [data]="procCateCounts"
+                [labels]="procCate"
+                [chartType]="pieChartType"
+                [options]="pieChartOptions"
+                [legend]="pieChartLegend">
+        </canvas>
+    </div>
+</mat-card>
+
+
+<mat-card>
+    <mat-card-title>KNEE PROC SUBCATE</mat-card-title>
+    <div style="display: block">
+        <canvas *ngIf="procSubCate.length>0"
+                baseChart
+                [data]="procSubCateCounts"
+                [labels]="procSubCate"
+                [chartType]="pieChartType"
+                [options]="pieChartOptions"
+                [legend]="pieChartLegend">
+        </canvas>
+    </div>
+</mat-card>

@@ -4,7 +4,7 @@ import {Label} from 'ng2-charts';
 import {DataCountDTO} from '../../pages/visualization/visualization.component';
 
 @Component({
-  selector: 'app-date-count',
+  selector: 'app-vis-date-count',
   templateUrl: './vis-date-count.component.html',
   styleUrls: ['./vis-date-count.component.scss']
 })
@@ -30,7 +30,6 @@ export class DateCountComponent implements OnInit {
 
   public barChartOptions: ChartOptions = {
     responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
     scales: {xAxes: [{}], yAxes: [{}]},
   };
 
@@ -42,11 +41,11 @@ export class DateCountComponent implements OnInit {
   }
 
   public chartClicked({event, active}: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
+    // console.log(event, active);
   }
 
   public chartHovered({event, active}: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
+    // console.log(event, active);
   }
 
 }
