@@ -4,8 +4,9 @@
                  [fixedInViewport]=false [fixedTopGap]=0
                  [fixedBottomGap]=0>
       <mat-nav-list>
-        <mat-list-item routerLink="datasets" routerLinkActive="active-red">Datasets</mat-list-item>
-        <mat-list-item routerLink="visualization" routerLinkActive="active-red">Visualization</mat-list-item>
+        <br>
+        <mat-list-item routerLink="datasets" [routerLinkActive]="['active']">DATASETS</mat-list-item>
+        <mat-list-item routerLink="visualization" [routerLinkActive]="['active']">EXPLORE</mat-list-item>
       </mat-nav-list>
     </mat-sidenav>
   </mat-sidenav-container>
