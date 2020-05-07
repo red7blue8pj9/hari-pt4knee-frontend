@@ -39,6 +39,7 @@ import {DatasetsComponent, DatasetsDescriptionDialog} from './pages/datasets/dat
 import {VisualizationComponent} from './pages/visualization/visualization.component';
 import {DateCountComponent} from './components/vis-date-count/vis-date-count.component';
 import {VisProcCateComponent} from "./components/vis-proc-cate/vis-proc-cate.component";
+import { HighchartsChartComponent } from 'highcharts-angular';
 
 @NgModule({
     declarations: [
@@ -51,6 +52,7 @@ import {VisProcCateComponent} from "./components/vis-proc-cate/vis-proc-cate.com
         DateCountComponent,
         VisProcCateComponent,
         DatasetsDescriptionDialog,
+        HighchartsChartComponent,
     ],
     entryComponents: [DatasetsComponent, DatasetsDescriptionDialog],
     imports: [

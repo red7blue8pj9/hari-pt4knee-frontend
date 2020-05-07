@@ -23,6 +23,7 @@ export class VisualizationComponent implements OnInit {
     public procCateCounts: number[] = [];
     public procSubCate: Label[] = [];
     public procSubCateCounts: number[] = [];
+    public procData: PieChartDTO[] = [];
 
     constructor(public visualizationService: VisualizationService) {
 
@@ -70,6 +71,7 @@ export class VisualizationComponent implements OnInit {
                 const cur = element;
                 this.procSubCate.push(cur.KNEE_PROC_SUBCATE);
                 this.procSubCateCounts.push(cur.DISTINCT_STUDY_ID);
+                this.procData.push({name: cur.KNEE_PROC_SUBCATE, y: cur.DISTINCT_STUDY_ID});
             });
         });
     }
@@ -96,4 +98,7 @@ export interface DataCountDTO {
     data: number[];
 }
 
-
+export interface PieChartDTO {
+    name: string;
+    y: number;
+}

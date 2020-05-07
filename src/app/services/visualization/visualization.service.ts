@@ -131,24 +131,42 @@ export class VisualizationService {
 
 
     public async getProcCate(): Promise<InputDataDTO> {
-        // return new Promise<InputDataDTO>(resolve => {
-        //     const a: InputDataDTO = {
-        //         data: [
-        //             {
-        //                 "DISTINCT_STUDY_ID": 414,
-        //                 "KNEE_PROC_CATE": "CAM/Integrative"
-        //             },
-        //             {
-        //                 "DISTINCT_STUDY_ID": 426,
-        //                 "KNEE_PROC_CATE": "DME"
-        //             },
-        //             {
-        //                 "DISTINCT_STUDY_ID": 18293,
-        //                 "KNEE_PROC_CATE": "Imaging"
-        //             }], ok: true
-        //     };
-        //     resolve(a);
-        // });
+        return new Promise<InputDataDTO>(resolve => {
+            const a: InputDataDTO = {
+                data: [
+                    {
+                        "DISTINCT_STUDY_ID": 104,
+                        "KNEE_PROC_CATE": "CAM/Integrative",
+                        "KNEE_PROC_SUBCATE": "Acupuncture"
+                    },
+                    {
+                        "DISTINCT_STUDY_ID": 233,
+                        "KNEE_PROC_CATE": "CAM/Integrative",
+                        "KNEE_PROC_SUBCATE": "Chiropractor/Osteo"
+                    },
+                    {
+                        "DISTINCT_STUDY_ID": 41,
+                        "KNEE_PROC_CATE": "CAM/Integrative",
+                        "KNEE_PROC_SUBCATE": "Integrative health referral"
+                    },
+                    {
+                        "DISTINCT_STUDY_ID": 53,
+                        "KNEE_PROC_CATE": "CAM/Integrative",
+                        "KNEE_PROC_SUBCATE": "Massage Therapy"
+                    },
+                    {
+                        "DISTINCT_STUDY_ID": 330,
+                        "KNEE_PROC_CATE": "DME",
+                        "KNEE_PROC_SUBCATE": "Cane"
+                    },
+                    {
+                        "DISTINCT_STUDY_ID": 97,
+                        "KNEE_PROC_CATE": "DME",
+                        "KNEE_PROC_SUBCATE": "Tens"
+                    }], ok: true
+            };
+            resolve(a);
+        });
         return await this.httpService.get(`vis/proc_cate`);
     }
 
@@ -194,6 +212,7 @@ export interface ProcCateJson {
 }
 
 export interface ProcSubCateJson {
+    KNEE_PROC_CATE: string;
     KNEE_PROC_SUBCATE: string;
     DISTINCT_STUDY_ID: number;
 }
