@@ -129,47 +129,45 @@ export class VisualizationService {
         return await this.httpService.get(`vis/date_count_year`);
     }
 
-
     public async getProcCate(): Promise<InputDataDTO> {
-        return new Promise<InputDataDTO>(resolve => {
-            const a: InputDataDTO = {
-                data: [
-                    {
-                        "DISTINCT_STUDY_ID": 104,
-                        "KNEE_PROC_CATE": "CAM/Integrative",
-                        "KNEE_PROC_SUBCATE": "Acupuncture"
-                    },
-                    {
-                        "DISTINCT_STUDY_ID": 233,
-                        "KNEE_PROC_CATE": "CAM/Integrative",
-                        "KNEE_PROC_SUBCATE": "Chiropractor/Osteo"
-                    },
-                    {
-                        "DISTINCT_STUDY_ID": 41,
-                        "KNEE_PROC_CATE": "CAM/Integrative",
-                        "KNEE_PROC_SUBCATE": "Integrative health referral"
-                    },
-                    {
-                        "DISTINCT_STUDY_ID": 53,
-                        "KNEE_PROC_CATE": "CAM/Integrative",
-                        "KNEE_PROC_SUBCATE": "Massage Therapy"
-                    },
-                    {
-                        "DISTINCT_STUDY_ID": 330,
-                        "KNEE_PROC_CATE": "DME",
-                        "KNEE_PROC_SUBCATE": "Cane"
-                    },
-                    {
-                        "DISTINCT_STUDY_ID": 97,
-                        "KNEE_PROC_CATE": "DME",
-                        "KNEE_PROC_SUBCATE": "Tens"
-                    }], ok: true
-            };
-            resolve(a);
-        });
+        // return new Promise<InputDataDTO>(resolve => {
+        //     const a: InputDataDTO = {
+        //         data: [
+        //             {
+        //                 "DISTINCT_STUDY_ID": 104,
+        //                 "KNEE_PROC_CATE": "CAM/Integrative",
+        //                 "KNEE_PROC_SUBCATE": "Acupuncture"
+        //             },
+        //             {
+        //                 "DISTINCT_STUDY_ID": 233,
+        //                 "KNEE_PROC_CATE": "CAM/Integrative",
+        //                 "KNEE_PROC_SUBCATE": "Chiropractor/Osteo"
+        //             },
+        //             {
+        //                 "DISTINCT_STUDY_ID": 41,
+        //                 "KNEE_PROC_CATE": "CAM/Integrative",
+        //                 "KNEE_PROC_SUBCATE": "Integrative health referral"
+        //             },
+        //             {
+        //                 "DISTINCT_STUDY_ID": 53,
+        //                 "KNEE_PROC_CATE": "CAM/Integrative",
+        //                 "KNEE_PROC_SUBCATE": "Massage Therapy"
+        //             },
+        //             {
+        //                 "DISTINCT_STUDY_ID": 330,
+        //                 "KNEE_PROC_CATE": "DME",
+        //                 "KNEE_PROC_SUBCATE": "Cane"
+        //             },
+        //             {
+        //                 "DISTINCT_STUDY_ID": 97,
+        //                 "KNEE_PROC_CATE": "DME",
+        //                 "KNEE_PROC_SUBCATE": "Tens"
+        //             }], ok: true
+        //     };
+        //     resolve(a);
+        // });
         return await this.httpService.get(`vis/proc_cate`);
     }
-
 
     public async getProcSubCate(): Promise<InputDataDTO> {
         // return new Promise<InputDataDTO>((resolve => {
@@ -177,16 +175,20 @@ export class VisualizationService {
         //         data: [
         //             {
         //                 "DISTINCT_STUDY_ID": 104,
+        //                 "KNEE_PROC_CATE": "CAM/Integrative",
         //                 "KNEE_PROC_SUBCATE": "Acupuncture"
         //             },
         //             {
-        //                 "DISTINCT_STUDY_ID": 5,
-        //                 "KNEE_PROC_SUBCATE": "Aging resource"
+        //                 "DISTINCT_STUDY_ID": 233,
+        //                 "KNEE_PROC_CATE": "CAM/Integrative",
+        //                 "KNEE_PROC_SUBCATE": "Chiropractor/Osteo"
         //             },
         //             {
-        //                 "DISTINCT_STUDY_ID": 415,
-        //                 "KNEE_PROC_SUBCATE": "Aquatic Exercise"
-        //             }], ok: true
+        //                 "DISTINCT_STUDY_ID": 41,
+        //                 "KNEE_PROC_CATE": "CAM/Integrative",
+        //                 "KNEE_PROC_SUBCATE": "Integrative health referral"
+        //             }
+        //             ], ok: true
         //     };
         //     resolve(a);
         // }));
@@ -196,7 +198,7 @@ export class VisualizationService {
 
 export interface InputDataDTO {
     ok: boolean;
-    data: DateCountJson[] | ProcCateJson[] | ProcSubCateJson[];
+    data: DateCountJson[] | ProcCateJson[] | SubProcCateJson[];
 }
 
 export interface DateCountJson {
@@ -211,7 +213,7 @@ export interface ProcCateJson {
     DISTINCT_STUDY_ID: number;
 }
 
-export interface ProcSubCateJson {
+export interface SubProcCateJson{
     KNEE_PROC_CATE: string;
     KNEE_PROC_SUBCATE: string;
     DISTINCT_STUDY_ID: number;

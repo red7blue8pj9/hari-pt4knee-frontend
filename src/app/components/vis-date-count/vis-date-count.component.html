@@ -1,36 +1,95 @@
 <mat-card>
-    <mat-card-title>ENC Numbers Per Day</mat-card-title>
-    <mat-selection-list>
-
-    </mat-selection-list>
-    <div *ngIf="dates.length>0" style="display: block">
-        <canvas baseChart [datasets]="dateData" [labels]="dates"
-                [options]="barChartOptions"
-                [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+    <div *ngIf="this.yearDatas.length>0">
+        <highcharts-chart
+                [Highcharts]="highChart"
+                [options]="yearColumnChartOption"
+                style="width: 100%; display: block;"></highcharts-chart>
     </div>
 </mat-card>
-
 
 <mat-card>
-    <mat-card-title>ENC Numbers Per Month</mat-card-title>
-    <div *ngIf="months.length>0" style="display: block">
-        <canvas baseChart [datasets]="monthData" [labels]="months"
-                [options]="barChartOptions"
-                [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+    <div *ngIf="this.monthDatas.length>0">
+        <highcharts-chart
+                [Highcharts]="highChart"
+                [options]="monthColumnChartOption"
+                style="width: 100%; display: block;"></highcharts-chart>
     </div>
-    <!--  <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>-->
 </mat-card>
-
 
 <mat-card>
-    <mat-card-title>ENC Numbers Per Year</mat-card-title>
-    <div *ngIf="years.length>0" style="display: block">
-        <canvas baseChart [datasets]="yearData" [labels]="years"
-                [options]="barChartOptions"
-                [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+    <div>
+
+        <mat-label>Select an year to explore</mat-label>
+        <br>
+        <mat-select [(ngModel)]="selectYear">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let element of yearOptions" [value]="element">
+                {{element}}
+            </mat-option>
+        </mat-select>
     </div>
-    <!--  <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>-->
+    <div>
+        <mat-label>Select an month to explore</mat-label>
+        <br>
+        <mat-select [(ngModel)]="selectMonth">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let element of monthOptions" [value]="element">
+                {{element}}
+            </mat-option>
+        </mat-select>
+    </div>
+
+    <button mat-stroked-button color="primary" id="btn"
+            (click)="selectYearDataInDates(this.selectYear,this.selectMonth)">Confirm
+    </button>
+
+    <br>
+    <div *ngIf="this.dateLabel.length > 0" (load)="selectYearDataInDates(this.selectYear,this.selectMonth)">
+        <highcharts-chart
+                [Highcharts]="highChart"
+                [options]="dateColumnChartOption"
+                [constructorType]="chartConstructor"
+                [callbackFunction]="chartCallback"
+                [(update)]="updateFromSelection"
+                [oneToOne]="true"
+                style="width: 100%; display: block;"></highcharts-chart>
+    </div>
 </mat-card>
+
+
+<!--<mat-card>-->
+<!--    <mat-card-title>ENC Numbers Per Day</mat-card-title>-->
+<!--    <mat-selection-list>-->
+
+<!--    </mat-selection-list>-->
+<!--    <div *ngIf="dates.length>0" style="display: block">-->
+<!--        <canvas baseChart [datasets]="dateData" [labels]="dates"-->
+<!--                [options]="barChartOptions"-->
+<!--                [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"-->
+<!--                (chartClick)="chartClicked($event)"></canvas>-->
+<!--    </div>-->
+<!--</mat-card>-->
+
+
+<!--<mat-card>-->
+<!--    <mat-card-title>ENC Numbers Per Month</mat-card-title>-->
+<!--    <div *ngIf="months.length>0" style="display: block">-->
+<!--        <canvas baseChart [datasets]="monthData" [labels]="months"-->
+<!--                [options]="barChartOptions"-->
+<!--                [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"-->
+<!--                (chartClick)="chartClicked($event)"></canvas>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;  <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>&ndash;&gt;-->
+<!--</mat-card>-->
+
+
+<!--<mat-card>-->
+<!--    <mat-card-title>ENC Numbers Per Year</mat-card-title>-->
+<!--    <div *ngIf="years.length>0" style="display: block">-->
+<!--        <canvas baseChart [datasets]="yearData" [labels]="years"-->
+<!--                [options]="barChartOptions"-->
+<!--                [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"-->
+<!--                (chartClick)="chartClicked($event)"></canvas>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;  <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>&ndash;&gt;-->
+<!--</mat-card>-->
