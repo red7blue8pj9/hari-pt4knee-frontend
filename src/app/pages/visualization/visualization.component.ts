@@ -116,22 +116,29 @@ export class VisualizationComponent implements OnInit {
         await this.visualizationService.getProcSubCate().then((dataObj: any) => {
             const dataResult: SubProcCateJson[] = dataObj.data;
             // console.log(dataResult);
+            // calculate the sum of distinct study_ids
+            let totalNum = 0;
+            dataResult.forEach(e => {
+                totalNum += e.DISTINCT_STUDY_ID;
+            })
+            // make 100 base
+            totalNum = totalNum/100;
 
             let procListData = new Map();
             let subprocListData = new Map();
             dataResult.forEach(ele => {
                 if (procListData.has(ele.KNEE_PROC_CATE)) {
-                    procListData.set(ele.KNEE_PROC_CATE, procListData.get(ele.KNEE_PROC_CATE) + ele.DISTINCT_STUDY_ID);
+                    procListData.set(ele.KNEE_PROC_CATE, procListData.get(ele.KNEE_PROC_CATE) + ele.DISTINCT_STUDY_ID/totalNum);
                 } else {
-                    procListData.set(ele.KNEE_PROC_CATE, ele.DISTINCT_STUDY_ID);
+                    procListData.set(ele.KNEE_PROC_CATE, ele.DISTINCT_STUDY_ID/totalNum);
                 }
                 if (subprocListData.has(ele.KNEE_PROC_CATE)) {
                     let tmp = subprocListData.get(ele.KNEE_PROC_CATE)
-                    tmp.push([ele.KNEE_PROC_SUBCATE, ele.DISTINCT_STUDY_ID]);
+                    tmp.push([ele.KNEE_PROC_SUBCATE, ele.DISTINCT_STUDY_ID/totalNum]);
                     subprocListData.set(ele.KNEE_PROC_CATE, tmp);
                 } else {
                     let tmp = [];
-                    tmp.push([ele.KNEE_PROC_SUBCATE, ele.DISTINCT_STUDY_ID])
+                    tmp.push([ele.KNEE_PROC_SUBCATE, ele.DISTINCT_STUDY_ID/totalNum])
                     subprocListData.set(ele.KNEE_PROC_CATE, tmp);
                 }
             });

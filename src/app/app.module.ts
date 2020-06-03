@@ -39,7 +39,9 @@ import {DatasetsComponent, DatasetsDescriptionDialog} from './pages/datasets/dat
 import {VisualizationComponent} from './pages/visualization/visualization.component';
 import {DateCountComponent} from './components/vis-date-count/vis-date-count.component';
 import {VisProcCateComponent} from "./components/vis-proc-cate/vis-proc-cate.component";
-import { HighchartsChartComponent } from 'highcharts-angular';
+import { HighchartsChartModule} from 'highcharts-angular';
+import { VisGeneralCountComponent } from './components/vis-general-count/vis-general-count.component';
+import { VisLocationEncComponent } from './components/vis-location-enc/vis-location-enc.component';
 
 @NgModule({
     declarations: [
@@ -52,7 +54,8 @@ import { HighchartsChartComponent } from 'highcharts-angular';
         DateCountComponent,
         VisProcCateComponent,
         DatasetsDescriptionDialog,
-        HighchartsChartComponent,
+        VisGeneralCountComponent,
+        VisLocationEncComponent,
     ],
     entryComponents: [DatasetsComponent, DatasetsDescriptionDialog],
     imports: [
@@ -86,6 +89,7 @@ import { HighchartsChartComponent } from 'highcharts-angular';
         MatTableModule,
         MatListModule,
         MatDialogModule,
+        HighchartsChartModule
     ],
     providers: [
         HttpService,

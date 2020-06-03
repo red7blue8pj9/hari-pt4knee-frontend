@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '../http/http.service';
+import {HttpHeaders} from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
 })
+
 export class VisualizationService {
     constructor(public httpService: HttpService) {
         // console.log(this.getDateCount());
@@ -46,7 +48,7 @@ export class VisualizationService {
         //   };
         //   resolve(a);
         // }));
-        return await this.httpService.get(`vis/date_count_day`);
+        return await this.httpService.post(`vis/date_count_day`,{});
     }
 
     public async getDateCountPerMonth(): Promise<InputDataDTO> {
@@ -86,7 +88,7 @@ export class VisualizationService {
         //   };
         //   resolve(a);
         // }));
-        return await this.httpService.get(`vis/date_count_month`);
+        return await this.httpService.post(`vis/date_count_month`,{});
     }
 
     public async getDateCountPerYear(): Promise<InputDataDTO> {
@@ -126,7 +128,7 @@ export class VisualizationService {
         //   };
         //   resolve(a);
         // }));
-        return await this.httpService.get(`vis/date_count_year`);
+        return await this.httpService.post(`vis/date_count_year`,{});
     }
 
     public async getProcCate(): Promise<InputDataDTO> {
@@ -166,7 +168,7 @@ export class VisualizationService {
         //     };
         //     resolve(a);
         // });
-        return await this.httpService.get(`vis/proc_cate`);
+        return await this.httpService.post(`vis/proc_cate`,{});
     }
 
     public async getProcSubCate(): Promise<InputDataDTO> {
@@ -192,7 +194,7 @@ export class VisualizationService {
         //     };
         //     resolve(a);
         // }));
-        return await this.httpService.get(`vis/proc_subcate`);
+        return await this.httpService.post(`vis/proc_subcate`,{});
     }
 }
 

@@ -46,15 +46,15 @@
                 </div>
             </mat-card-content>
             <div class="form-group">
-                <div class="col-half">
-                    <button [disabled]="loading" mat-stroked-button color="accent" class="btn-block">
+                <span class="col-half">
+                    <button [disabled]="loading" mat-stroked-button color="accent" class="btn-block" type="submit">
                         <span *ngIf="loading"></span>
                         Register
                     </button>
-                </div>
-                <div class="col-half">
-                    <button routerLink="/" mat-stroked-button color="accent" class="btn-block">Cancel</button>
-                </div>
+                </span>
+                <span class="col-half">
+                    <button routerLink="/login" mat-stroked-button color="accent" class="btn-block" type="button">Cancel</button>
+                </span>
             </div>
 
         </form>

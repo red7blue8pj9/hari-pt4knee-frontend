@@ -4,10 +4,10 @@
 
 export const environment = {
     production: false,
-    // apiRoot: 'https://shrsft6029himb.shrs.pitt.edu/pt4knee/dev/api/api',
-    // userRoot: 'https://shrsft6029himb.shrs.pitt.edu/pt4knee/dev/api/',
-    apiRoot: 'http://10.0.0.165:3502/api',
-    userRoot: 'http://10.0.0.165:3502/',
+    apiRoot: 'https://shrsft6029himb.shrs.pitt.edu/pt4knee/dev/api/api',
+    userRoot: 'https://shrsft6029himb.shrs.pitt.edu/pt4knee/dev/api/',
+    // apiRoot: 'http://10.0.0.165:3502/api',
+    // userRoot: 'http://10.0.0.165:3502/',
 };
 
 /*

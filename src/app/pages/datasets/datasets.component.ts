@@ -44,6 +44,7 @@ export class DatasetsComponent implements OnInit {
 
     public downloadFile(fileName) {
         this.datasetsService.downloadFile(fileName).subscribe(res => {
+            //console.log(fileName);
             this.saveCSVFile(res, fileName);
         });
     }
@@ -52,14 +53,15 @@ export class DatasetsComponent implements OnInit {
         var a = document.createElement('a');
         var blob = new Blob([data], {'type': "application/vnd.ms-excel"});
         a.href = URL.createObjectURL(blob);
-        a.download = name + ".csv";
+        a.download = table_name + ".csv";
         a.click();
     }
 
-    showDescription(table_name: string) {
+    showDescription(table_name: string, table_description : string) {
+        // console.log(table_name);
         const descRef = this.dialog.open(DatasetsDescriptionDialog, {
             width: '450px',
-            data: {name: table_name}
+            data: {table_name: table_name, table_description: table_description}
         });
 
         descRef.afterClosed().subscribe(result => {

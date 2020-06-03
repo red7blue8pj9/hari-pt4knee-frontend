@@ -35,8 +35,11 @@
         <ng-container matColumnDef="action">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Actions</mat-header-cell>
             <mat-cell *matCellDef="let row" [style.color]="row.table_name" data-label="table_name">
-                <button mat-raised-button color="primary" (click)="showDescription(row.table_name)">Description</button>
-                <button mat-raised-button color="primary" (click)="downloadFile(row.table_name)">Download</button>
+                <button mat-button color="primary" (click)="showDescription(row.table_name,row.description)">
+                    Description
+                </button>
+                &nbsp;
+                <button mat-button color="primary" (click)="downloadFile(row.table_name)">Download</button>
             </mat-cell>
         </ng-container>
 

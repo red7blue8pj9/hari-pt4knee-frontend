@@ -4,26 +4,38 @@ import {environment} from '../../../environments/environment';
 
 const apiRoot: string = environment.apiRoot;
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Access-Control-Allow-Origin': '*',
-  })
-};
+// const httpOptions = {
+//     headers: new HttpHeaders({
+//         'Access-Control-Allow-Origin': '*',
+//     }),
+// };
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class HttpService {
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(private http: HttpClient) {
+    }
 
-  post<T>(url: string, body: any): Promise<T> {
-    return this.http.post<T>(`${apiRoot}/${url}`, body, httpOptions).toPromise();
-  }
+    post<T>(url: string, body: any): Promise<T> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Access-Control-Allow-Origin': '*',
+                'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))['data']['token']
+            })
+        };
+        return this.http.post<T>(`${apiRoot}/${url}`, body, httpOptions).toPromise();
+    }
 
-  get<T>(url: string): Promise<T> {
-    return this.http.get<T>(`${apiRoot}/${url}`, httpOptions).toPromise();
-  }
+    get<T>(url: string): Promise<T> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Access-Control-Allow-Origin': '*',
+                'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))['data']['token']
+            })
+        };
+        return this.http.get<T>(`${apiRoot}/${url}`, httpOptions).toPromise();
+    }
 }
 

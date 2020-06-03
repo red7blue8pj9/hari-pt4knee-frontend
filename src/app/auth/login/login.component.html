@@ -4,36 +4,51 @@
         <mat-card-header>
             <mat-card-title>LOGIN</mat-card-title>
         </mat-card-header>
-
+<br>
         <form class="myform" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-card-content>
-                <mat-form-field class="full-width">
-                    <input type="text" formControlName="email" class="form-control" matInput placeholder="Email"
-                           [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
-                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required">Email is required</div>
-                    </div>
-                </mat-form-field>
 
-                <mat-form-field class="full-width">
-                    <input type="password" formControlName="password" class="form-control" matInput
-                           placeholder="Password"
-                           [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
+                <div class="row">
+                    <div class="column-left">
+                        <label>Email</label>
                     </div>
-                </mat-form-field>
+                    <div class="column-right">
+                        <mat-form-field class="full-width">
+                            <input type="text" formControlName="email" class="form-control" matInput placeholder=""
+                                   [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Email is required</div>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column-left">
+                        <label>Password</label>
+                    </div>
+                    <div class="column-right">
+                        <mat-form-field class="full-width">
+                            <input type="password" formControlName="password" class="form-control" matInput
+                                   placeholder=""
+                                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                </div>
             </mat-card-content>
             <div class="form-group">
-              <div class="col-half">
-                <button [disabled]="loading" mat-stroked-button color="accent" class="btn-block">
-                  <span *ngIf="loading"></span>
-                  Login
-                </button>
-              </div>
-              <div class="col-half">
-                <button routerLink="/signup" mat-stroked-button color="accent" class="btn-block">Register</button>
-              </div>
+                <span class="col-half">
+                    <button [disabled]="loading" mat-stroked-button color="accent" class="btn-block" type="submit">
+                        <span *ngIf="loading"></span>
+                        Login
+                    </button>
+                </span>
+                <span class="col-half">
+                    <button routerLink="/signup" mat-stroked-button color="accent" class="btn-block" type="button">Register</button>
+                </span>
             </div>
         </form>
     </mat-card>

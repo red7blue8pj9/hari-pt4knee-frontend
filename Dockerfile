@@ -19,7 +19,7 @@
 # EXPOSE 8043
 
 # use this build portal first
-# ng build --delete-output-path=true --aot --base-href --deploy-url /redwine/dev/portal/
+# ng build --delete-output-path=true --aot --base-href --deploy-url /pt4knee/dev/portal/
 
 FROM pierrezemb/gostatic
 

@@ -1,7 +1,12 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {ChartOptions, ChartType} from "chart.js";
 import {Label} from "ng2-charts";
-import {DataCountDTO, HighChartDTO,HighChartDrillDTO,HighChartDrillDownDTO} from "../../pages/visualization/visualization.component";
+import {
+    DataCountDTO,
+    HighChartDTO,
+    HighChartDrillDTO,
+    HighChartDrillDownDTO
+} from "../../pages/visualization/visualization.component";
 import {ProcCateJson} from "../../services/visualization/visualization.service";
 import * as  Highcharts from 'highcharts';
 import More from 'highcharts/highcharts-more';

@@ -74,6 +74,28 @@ body {
   width: 100%;
 }
 
+.login-wrapper .myform .column-left {
+  float: left;
+  width: 30%;
+  padding: 0.8375em 0;
+}
+
+.login-wrapper .myform .column-left p {
+  padding: 0.8375em 0.8375em;
+}
+
+.login-wrapper .myform .column-right {
+  float: left;
+  width: 70%;
+}
+
+
+.login-wrapper .myform .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .login-wrapper .full-width, .login-wrapper .btn-block {
   width: 100%;
 }
@@ -109,3 +131,9 @@ body {
   width: 50%;
   padding: 0.8375em 0;
 }
+
+.form-group .col-half {
+  width: 45%;
+  margin: 5px;
+}
+

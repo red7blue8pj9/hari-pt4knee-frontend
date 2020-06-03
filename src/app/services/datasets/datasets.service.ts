@@ -4,13 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from '../../../environments/environment';
 
 const apiRoot: string = environment.apiRoot;
-const httpOptions = {
-    headers: new HttpHeaders({
-            'Access-Control-Allow-Origin': '*',
-        }
-    )
-    , responseType: 'blob' as 'json'
-};
+
 
 @Injectable({
     providedIn: 'root'
@@ -45,10 +39,18 @@ export class DatasetsService {
         //   };
         //   resolve(a);
         // });
-        return await this.httpService.get(`dataset/all`);
+        return await this.httpService.post(`dataset/all`, {});
     }
 
     public downloadFile(fileName: string) {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                    'Access-Control-Allow-Origin': '*',
+                    'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))['data']['token'],
+                }
+            ),
+            responseType: 'blob' as 'json',
+        };
         return this.http.get<Blob>(`${apiRoot}/download/${fileName}`, httpOptions);
     }
 

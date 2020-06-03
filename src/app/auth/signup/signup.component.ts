@@ -53,6 +53,7 @@ export class SignupComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
+      this.registerForm.reset();
       return;
     }
 
