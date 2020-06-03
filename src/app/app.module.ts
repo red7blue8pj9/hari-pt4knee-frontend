@@ -39,9 +39,8 @@ import {DatasetsComponent, DatasetsDescriptionDialog} from './pages/datasets/dat
 import {VisualizationComponent} from './pages/visualization/visualization.component';
 import {DateCountComponent} from './components/vis-date-count/vis-date-count.component';
 import {VisProcCateComponent} from "./components/vis-proc-cate/vis-proc-cate.component";
-import { HighchartsChartModule} from 'highcharts-angular';
-import { VisGeneralCountComponent } from './components/vis-general-count/vis-general-count.component';
-import { VisLocationEncComponent } from './components/vis-location-enc/vis-location-enc.component';
+import {HighchartsChartModule} from 'highcharts-angular';
+import {VisLocationEncComponent} from './components/vis-location-enc/vis-location-enc.component';
 
 @NgModule({
     declarations: [
@@ -54,7 +53,6 @@ import { VisLocationEncComponent } from './components/vis-location-enc/vis-locat
         DateCountComponent,
         VisProcCateComponent,
         DatasetsDescriptionDialog,
-        VisGeneralCountComponent,
         VisLocationEncComponent,
     ],
     entryComponents: [DatasetsComponent, DatasetsDescriptionDialog],
