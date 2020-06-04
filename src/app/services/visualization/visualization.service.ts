@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '../http/http.service';
-import {HttpHeaders} from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
@@ -48,7 +47,7 @@ export class VisualizationService {
         //   };
         //   resolve(a);
         // }));
-        return await this.httpService.post(`vis/date_count_day`,{});
+        return await this.httpService.post(`vis/date_count_day`, {});
     }
 
     public async getDateCountPerMonth(): Promise<InputDataDTO> {
@@ -88,7 +87,7 @@ export class VisualizationService {
         //   };
         //   resolve(a);
         // }));
-        return await this.httpService.post(`vis/date_count_month`,{});
+        return await this.httpService.post(`vis/date_count_month`, {});
     }
 
     public async getDateCountPerYear(): Promise<InputDataDTO> {
@@ -128,7 +127,7 @@ export class VisualizationService {
         //   };
         //   resolve(a);
         // }));
-        return await this.httpService.post(`vis/date_count_year`,{});
+        return await this.httpService.post(`vis/date_count_year`, {});
     }
 
     public async getProcCate(): Promise<InputDataDTO> {
@@ -168,7 +167,7 @@ export class VisualizationService {
         //     };
         //     resolve(a);
         // });
-        return await this.httpService.post(`vis/proc_cate`,{});
+        return await this.httpService.post(`vis/proc_cate`, {});
     }
 
     public async getProcSubCate(): Promise<InputDataDTO> {
@@ -194,13 +193,17 @@ export class VisualizationService {
         //     };
         //     resolve(a);
         // }));
-        return await this.httpService.post(`vis/proc_subcate`,{});
+        return await this.httpService.post(`vis/proc_subcate`, {});
+    }
+
+    public async getLocEnc(): Promise<InputDataDTO> {
+        return await this.httpService.post(`vis/location_enc`, {});
     }
 }
 
 export interface InputDataDTO {
     ok: boolean;
-    data: DateCountJson[] | ProcCateJson[] | SubProcCateJson[];
+    data: DateCountJson[] | ProcCateJson[] | SubProcCateJson[] | LocEncJson[];
 }
 
 export interface DateCountJson {
@@ -215,10 +218,14 @@ export interface ProcCateJson {
     DISTINCT_STUDY_ID: number;
 }
 
-export interface SubProcCateJson{
+export interface SubProcCateJson {
     KNEE_PROC_CATE: string;
     KNEE_PROC_SUBCATE: string;
     DISTINCT_STUDY_ID: number;
 }
 
-
+export interface LocEncJson {
+    LOCATION: string;
+    START_DATE: string;
+    VISITS: number;
+}

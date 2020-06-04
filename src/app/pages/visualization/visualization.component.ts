@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
-    DateCountJson,
+    DateCountJson, LocEncJson,
     ProcCateJson,
     SubProcCateJson,
     VisualizationService
@@ -19,7 +19,7 @@ export class VisualizationComponent implements OnInit {
     public monthData: DataCountDTO[] = [];
     public years: Label[] = [];
     public yearData: DataCountDTO[] = [];
-
+    // data count
     public dateLabel = [];
     public dateDatas: ColumnChartDTO[] = [];
     public monthLabel = [];
@@ -27,18 +27,21 @@ export class VisualizationComponent implements OnInit {
     public yearLabel = [];
     public yearDatas: ColumnChartDTO[] = [];
     public dateOriginal: DateCountJson[];
-
+    // procedure category and sub-category
     public procData: HighChartDTO[] = [];
     public subprocData: HighChartDrillDTO[] = [];
     public subprocDrillData: HighChartDrillDownDTO[] = [];
+    // location encounter
+    public locDateLable = [];
+    public locEncData: ColumnChartDTO[] = [];
 
     constructor(public visualizationService: VisualizationService) {
-
     }
 
     async ngOnInit() {
         await this.getDateCountData();
         await this.getProcCate();
+        await this.getLocEnc();
     }
 
     async getDateCountData() {
@@ -122,23 +125,23 @@ export class VisualizationComponent implements OnInit {
                 totalNum += e.DISTINCT_STUDY_ID;
             })
             // make 100 base
-            totalNum = totalNum/100;
+            totalNum = totalNum / 100;
 
             let procListData = new Map();
             let subprocListData = new Map();
             dataResult.forEach(ele => {
                 if (procListData.has(ele.KNEE_PROC_CATE)) {
-                    procListData.set(ele.KNEE_PROC_CATE, procListData.get(ele.KNEE_PROC_CATE) + ele.DISTINCT_STUDY_ID/totalNum);
+                    procListData.set(ele.KNEE_PROC_CATE, procListData.get(ele.KNEE_PROC_CATE) + ele.DISTINCT_STUDY_ID / totalNum);
                 } else {
-                    procListData.set(ele.KNEE_PROC_CATE, ele.DISTINCT_STUDY_ID/totalNum);
+                    procListData.set(ele.KNEE_PROC_CATE, ele.DISTINCT_STUDY_ID / totalNum);
                 }
                 if (subprocListData.has(ele.KNEE_PROC_CATE)) {
                     let tmp = subprocListData.get(ele.KNEE_PROC_CATE)
-                    tmp.push([ele.KNEE_PROC_SUBCATE, ele.DISTINCT_STUDY_ID/totalNum]);
+                    tmp.push([ele.KNEE_PROC_SUBCATE, ele.DISTINCT_STUDY_ID / totalNum]);
                     subprocListData.set(ele.KNEE_PROC_CATE, tmp);
                 } else {
                     let tmp = [];
-                    tmp.push([ele.KNEE_PROC_SUBCATE, ele.DISTINCT_STUDY_ID/totalNum])
+                    tmp.push([ele.KNEE_PROC_SUBCATE, ele.DISTINCT_STUDY_ID / totalNum])
                     subprocListData.set(ele.KNEE_PROC_CATE, tmp);
                 }
             });
@@ -150,6 +153,25 @@ export class VisualizationComponent implements OnInit {
             }
             // console.log(this.subprocData);
             // console.log(this.subprocDrillData);
+        });
+    }
+
+    async getLocEnc() {
+        await this.visualizationService.getLocEnc().then((dataObj: any) => {
+            const dataResult: LocEncJson[] = dataObj.data;
+            // console.log(dataResult);
+            // extract a location
+            const loc = 'CHEST MED ASSOC UPMC';
+            let data: number[] = [];
+            dataResult.forEach(e => {
+                if (e.LOCATION === loc) {
+                    this.locDateLable.push(e.START_DATE);
+                    data.push(e.VISITS);
+                }
+            });
+            this.locEncData.push({name: loc, data: data});
+            // console.log(this.locDateLable);
+            // console.log(this.locEncData);
         });
     }
 }
